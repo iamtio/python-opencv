@@ -1,6 +1,6 @@
 FROM python:3.7-alpine3.8
 
-ENV OPENCV_VERSION 3.2.0
+ENV OPENCV_VERSION 3.4.5
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
 
