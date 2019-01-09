@@ -1,4 +1,4 @@
-FROM python:3.5-alpine3.8
+FROM python:3.7-alpine3.8
 
 ENV OPENCV_VERSION 3.2.0
 ENV CC /usr/bin/clang
