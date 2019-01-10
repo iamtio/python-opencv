@@ -1,8 +1,6 @@
 FROM python:3.7-alpine3.8
 
 ENV OPENCV_VERSION 3.4.5
-ENV CC /usr/bin/clang
-ENV CXX /usr/bin/clang++
 
 RUN apk add --no-cache \
       libjpeg-turbo \
@@ -21,10 +19,11 @@ RUN apk add --no-cache --virtual=build_dependencies \
       tiff-dev \
       jasper-dev \
       ffmpeg-dev && \
+    export CC=/usr/bin/clang CXX=/usr/bin/clang++ && \
     pip install --no-cache-dir numpy && \
     wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.tar.gz -O - | tar xz && \
     mkdir opencv-${OPENCV_VERSION}/cmaked && \
-    cd opencv-${OPENCV_VERSION}/cmaked &&  \
+    cd opencv-${OPENCV_VERSION}/cmaked && \
     cmake -G Ninja \
       -DBUILD_TIFF=ON \
       -DBUILD_opencv_java=OFF \
